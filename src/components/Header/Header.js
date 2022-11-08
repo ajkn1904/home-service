@@ -18,9 +18,9 @@ const Header = () => {
             <Link to="/register" className='hover:border-b-4 border-b-green-900'>REGISTER</Link>
             </ul>
           </div>
-          <div className='flex justify-center align-center ml-0'>
+          <div className='flex justify-center align-center ml-5'>
             <img src={Logo} alt="logo" style={{borderRadius:"5px"}} />
-            <h1 className="btn btn-ghost normal-case text-xl italic">HomeService</h1>
+            <h1 className="btn btn-ghost normal-case text-xl italic">HOMEservice</h1>
           </div>
         </div>
         <div className="navbar-end hidden lg:flex">
