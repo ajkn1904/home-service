@@ -6,6 +6,9 @@ import Blog from './components/Blog/Blog';
 import LogIn from './components/LogIn/LogIn';
 import Register from './components/Register/Register';
 import Services from './components/Services/Services';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import AddService from './components/AddService/AddService';
+import MyReviews from './components/MyReviews/MyReviews';
 
 function App() {
 
@@ -23,6 +26,14 @@ const router = createBrowserRouter([
         path: "/services",
         loader: () => fetch('https://home-service-server.vercel.app/services'),
         element: <Services></Services>
+      },
+      {
+        path: "/addservice",
+        element: <PrivateRoute><AddService></AddService></PrivateRoute>
+      },
+      {
+        path: "/myreviews",
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
       },
       {
         path: "/blog",

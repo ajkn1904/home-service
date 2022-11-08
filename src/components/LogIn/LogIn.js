@@ -5,12 +5,16 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const LogIn = () => {
 
-const {user, userSignIn, signInWithProvider} = useContext(AuthContext);
+const {user, userSignIn, signInWithProvider, loading} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const [error, setError] = useState(null);
     const location = useLocation();
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/'; 
+
+    if(loading){
+        return <button className="btn btn-ghost text-red-700 loading"></button>
+    }
 
 
     const handleGoogleBtn = () => {

@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Services = () => {
+    const {loading} = useContext(AuthContext);
     const services = useLoaderData();
-    console.log(services)
+    //console.log(services)
+
+    if(loading){
+        return <button className="btn btn-ghost text-red-700 loading"></button>
+    }
     
     return (
         <div>

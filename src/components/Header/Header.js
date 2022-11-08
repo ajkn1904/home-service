@@ -15,11 +15,15 @@ const Header = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-            <Link to="/" className='hover:border-b-4 border-b-green-900'>HOME</Link>
-            <Link to="/services" className='hover:border-b-4 border-b-green-900'>SERVICES</Link>
-            <Link to="/blog" className='hover:border-b-4 border-b-green-900'>BLOG</Link>
+            <Link to="/" className='btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>HOME</Link>
+            <Link to="/services" className='btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>SERVICES</Link>
+            <Link to="/blog" className='btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>BLOG</Link>
             {  user?.uid ?
+                        <>
+                        <Link to="/addservice" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>ADD SERVICE</Link>
+                        <Link to="/myreviews" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>MY REVIEWS</Link>
                         <button className="btn btn-ghost normal-case" onClick={userSignOut}>LOG OUT</button>
+                      </>
                     :
                     <>
                         <button className="btn btn-ghost normal-case"><Link to="/login" className='mx-4 hover:border-b-4 border-b-green-900'>LOG IN</Link></button>
@@ -36,13 +40,17 @@ const Header = () => {
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
-            <Link to="/" className='mx-4 hover:border-b-4 border-b-green-900'>HOME</Link>
-            <Link to="/services" className='mx-4 hover:border-b-4 border-b-green-900'>SERVICES</Link>
-            <Link to="/blog" className='mx-4 hover:border-b-4 border-b-green-900'>BLOG</Link>
+            <Link to="/" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>HOME</Link>
+            <Link to="/services" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>SERVICES</Link>
+            <Link to="/blog" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>BLOG</Link>
                       
 
             {  user?.uid ?
-                        <button className="btn btn-ghost normal-case" onClick={userSignOut}>LOG OUT</button>
+                        <>
+                          <Link to="/addservice" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>ADD SERVICE</Link>
+                          <Link to="/myreviews" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>MY REVIEWS</Link>
+                          <button className="btn btn-ghost normal-case" onClick={userSignOut}>LOG OUT</button>
+                        </>
                     :
                     <>
                         <button className="btn btn-ghost normal-case"><Link to="/login" className='mx-4 hover:border-b-4 border-b-green-900'>LOG IN</Link></button>
