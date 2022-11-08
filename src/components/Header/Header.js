@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../logo.svg';
+import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
+
+  const {user} = useContext(AuthContext)
+
     return (
         <div><div className="navbar bg-green-100">
         <div className="navbar-start flex">
@@ -22,6 +26,7 @@ const Header = () => {
             <img src={Logo} alt="logo" style={{borderRadius:"5px"}} />
             <h1 className="btn btn-ghost normal-case text-xl italic">HOMEservice</h1>
           </div>
+          <p>{user?.displayName}</p>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">

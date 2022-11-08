@@ -16,12 +16,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch('http://localhost:5000/limitedservices'),
+        loader: () => fetch('https://home-service-server.vercel.app/limitedservices'),
         element: <Home></Home>
       },
       {
         path: "/services",
-        loader: () => fetch('http://localhost:5000/services'),
+        loader: () => fetch('https://home-service-server.vercel.app/services'),
         element: <Services></Services>
       },
       {
