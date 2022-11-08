@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Blog from './components/Blog/Blog';
 import LogIn from './components/LogIn/LogIn';
 import Register from './components/Register/Register';
+import Services from './components/Services/Services';
 
 function App() {
 
@@ -15,20 +16,25 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        loader: () => fetch('http://localhost:5000/limitedservices'),
         element: <Home></Home>
       },
-        {
-          path: "/blog",
-          element: <Blog></Blog>
-        },
-        {
-          path: "/login",
-          element: <LogIn></LogIn>
-        },
-        {
-          path: "/register",
-          element: <Register></Register>
-        }
+      {
+        path: "/services",
+        element: <Services></Services>
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>
+      },
+      {
+        path: "/login",
+        element: <LogIn></LogIn>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      }
     ]
   }
 ])
