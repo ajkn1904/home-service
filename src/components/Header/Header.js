@@ -1,13 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../../logo.svg';
 
 const Header = () => {
     return (
-        <div>
-            <Link to="/">HOME</Link>
-            <Link to="/blog">BLOG</Link>
-            <Link to="/signin">SIGN IN</Link>
-            <Link to="/register">REGISTER</Link>
+        <div><div className="navbar bg-green-100">
+        <div className="navbar-start flex">
+          <div className="dropdown flex">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
+            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <Link to="/" className='hover:border-b-4 border-b-green-900'>HOME</Link>
+            <Link to="/blog" className='hover:border-b-4 border-b-green-900'>BLOG</Link>
+            <Link to="/signin" className='hover:border-b-4 border-b-green-900'>SIGN IN</Link>
+            <Link to="/register" className='hover:border-b-4 border-b-green-900'>REGISTER</Link>
+            </ul>
+          </div>
+          <div className='flex justify-center align-center ml-0'>
+            <img src={Logo} alt="logo" style={{borderRadius:"5px"}} />
+            <h1 className="btn btn-ghost normal-case text-xl italic">HomeService</h1>
+          </div>
+        </div>
+        <div className="navbar-end hidden lg:flex">
+          <ul className="menu menu-horizontal p-0">
+            <Link to="/" className='mx-4 hover:border-b-4 border-b-green-900'>HOME</Link>
+            <Link to="/blog" className='mx-4 hover:border-b-4 border-b-green-900'>BLOG</Link>
+            <Link to="/signin" className='mx-4 hover:border-b-4 border-b-green-900'>SIGN IN</Link>
+            <Link to="/register" className='mx-4 hover:border-b-4 border-b-green-900'>REGISTER</Link>
+          </ul>
+        </div>
+      </div>
         </div>
     );
 };
