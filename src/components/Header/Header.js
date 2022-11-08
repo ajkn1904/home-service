@@ -5,7 +5,7 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
 
-  const {user} = useContext(AuthContext)
+  const {user, userSignOut} = useContext(AuthContext)
 
     return (
         <div><div className="navbar bg-green-100">
@@ -18,8 +18,14 @@ const Header = () => {
             <Link to="/" className='hover:border-b-4 border-b-green-900'>HOME</Link>
             <Link to="/services" className='hover:border-b-4 border-b-green-900'>SERVICES</Link>
             <Link to="/blog" className='hover:border-b-4 border-b-green-900'>BLOG</Link>
-            <Link to="/login" className='hover:border-b-4 border-b-green-900'>LOG IN</Link>
-            <Link to="/register" className='hover:border-b-4 border-b-green-900'>REGISTER</Link>
+            {  user?.uid ?
+                        <button className="btn btn-ghost normal-case" onClick={userSignOut}>LOG OUT</button>
+                    :
+                    <>
+                        <button className="btn btn-ghost normal-case"><Link to="/login" className='mx-4 hover:border-b-4 border-b-green-900'>LOG IN</Link></button>
+                        <button className="btn btn-ghost normal-case"><Link to="/register" className='mx-4 hover:border-b-4 border-b-green-900'>REGISTER</Link></button>
+                    </>  
+                    }
             </ul>
           </div>
           <div className='flex justify-center align-center ml-5'>
@@ -33,8 +39,16 @@ const Header = () => {
             <Link to="/" className='mx-4 hover:border-b-4 border-b-green-900'>HOME</Link>
             <Link to="/services" className='mx-4 hover:border-b-4 border-b-green-900'>SERVICES</Link>
             <Link to="/blog" className='mx-4 hover:border-b-4 border-b-green-900'>BLOG</Link>
-            <Link to="/login" className='mx-4 hover:border-b-4 border-b-green-900'>LOG IN</Link>
-            <Link to="/register" className='mx-4 hover:border-b-4 border-b-green-900'>REGISTER</Link>
+                      
+
+            {  user?.uid ?
+                        <button className="btn btn-ghost normal-case" onClick={userSignOut}>LOG OUT</button>
+                    :
+                    <>
+                        <button className="btn btn-ghost normal-case"><Link to="/login" className='mx-4 hover:border-b-4 border-b-green-900'>LOG IN</Link></button>
+                        <button className="btn btn-ghost normal-case"><Link to="/register" className='mx-4 hover:border-b-4 border-b-green-900'>REGISTER</Link></button>
+                    </>  
+                    }
           </ul>
         </div>
       </div>

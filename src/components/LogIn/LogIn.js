@@ -15,14 +15,14 @@ const LogIn = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input type="email" placeholder="Email" className="input input-bordered" name="email"/>
+                    <input type="email" placeholder="Email" className="input input-bordered" name="email" required />
                     </div>
 
                     <div className="form-control">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type="password" placeholder="Password" className="input input-bordered" name="password"/>
+                    <input type="password" placeholder="Password" className="input input-bordered" name="password" required />
                     <label className="label">
                     </label>
                     </div>
