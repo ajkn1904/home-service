@@ -7,7 +7,8 @@ const Register = () => {
 
     const {signInWithProvider, userSighup} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
-    const [error, setError] = useState(null); const location = useLocation();
+    const [error, setError] = useState(null); 
+    const location = useLocation();
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/';
 
@@ -19,7 +20,7 @@ const Register = () => {
             const user = res.user;
             console.log(user);
         })
-        .catch(err => console.log(err))
+        .catch(err =>  setError(err.message))
     }
 
     const handleSubmit = (event) => {
