@@ -1,12 +1,26 @@
-import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import React, { useContext, useEffect, useState } from 'react';
+/* import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider/AuthProvider'; */
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Services = () => {
-    const {loading} = useContext(AuthContext);
-    const services = useLoaderData();
+
+    const [services, setServices] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch('https://home-service-server.vercel.app/services')
+        .then(result => result.json())
+        .then(data => {
+            setServices(data);
+            setLoading(false);
+        })
+    }, [])
+
+    //const {loading} = useContext(AuthContext);
+    //const services = useLoaderData();
     //console.log(services)
+
 
     if(loading){
         return <button className="btn btn-ghost text-red-700 loading"></button>
