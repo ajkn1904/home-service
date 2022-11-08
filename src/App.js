@@ -1,9 +1,9 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Main from './components/Main/Main';
+import Main from './components/Layout/Main/Main';
 import Home from './components/Home/Home';
 import Blog from './components/Blog/Blog';
-import SignIn from './components/SignIn/SignIn';
+import LogIn from './components/LogIn/LogIn';
 import Register from './components/Register/Register';
 
 function App() {
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
           element: <Blog></Blog>
         },
         {
-          path: "/signin",
-          element: <SignIn></SignIn>
+          path: "/login",
+          element: <LogIn></LogIn>
         },
         {
           path: "/register",
