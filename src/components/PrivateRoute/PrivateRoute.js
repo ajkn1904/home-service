@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const PrivateRoute = ({children}) => {
@@ -11,29 +11,14 @@ const PrivateRoute = ({children}) => {
         return <button className="btn btn-ghost text-red-700 loading"></button>
     }
 
-    return (
-        <div>
-            
-        </div>
-    );
-};
-
-export default PrivateRoute;
-
-/*
-const PrivateRoute = ({children}) => {
-    
-    if(loading){
-        return <div>Loading...</div>
-    }
-
     if(user && user.uid){
         return children;
     }
     else{
-        return (
-            /* navigating users current location /
+        return (       
            <Navigate to='/login' state={{from: location}} replace></Navigate>
         );
     }
-};*/
+};
+
+export default PrivateRoute;

@@ -10,8 +10,8 @@ const ReviewCard = ({reviewData}) => {
                 <div className="flex  justify-between mb-4">
                     
                     <div className='flex justify-center items-center'>
-                        <div className="avatar online mr-3">
-                            <div className="w-10 h-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <div className="avatar mr-3">
+                            <div className="w-10 h-10 rounded-full ring ring-offset-base-100 ring-offset-0">
                                 <img src={reviewData.usersImg} alt=''/>
                             </div>
                         </div>
