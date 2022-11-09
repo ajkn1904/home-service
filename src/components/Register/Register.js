@@ -10,7 +10,7 @@ const Register = () => {
     const [error, setError] = useState(null); 
     const location = useLocation();
     const navigate = useNavigate()
-    const from = location.state?.from?.pathname || '/';
+    const from = location.state?.from?.pathname || "/";
 
 
     if(loading){
@@ -22,6 +22,7 @@ const Register = () => {
         signInWithProvider(googleProvider)
         .then(res => {
             const user = res.user;
+            navigate(from, {replace: true});
             console.log(user);
         })
         .catch(err =>  setError(err.message))

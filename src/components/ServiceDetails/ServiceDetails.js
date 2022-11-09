@@ -77,7 +77,7 @@ const ServiceDetails = () => {
                     )
             } </>  
             :
-                <p className='font-semibold bg-yellow-200 p-3' style={{textAlign: "center"}}>Please Share Your Precious Opinion with Us</p>   
+                <p className='font-semibold bg-yellow-200 p-3 text-center'>Please Share Your Precious Opinion with Us</p>   
             }
             </div>
 
@@ -92,7 +92,7 @@ const ServiceDetails = () => {
                 </>
                 : 
                 <>
-                    <p>Please <Link to='/login' className='text-blue-600 text-center'>login</Link> to add a review.</p>
+                    <p className='font-semibold bg-green-200 p-3 text-center'>Please <Link to='/login' className='text-blue-600 text-center'>login</Link> to add a review.</p>
                 </>
                 }
             </div>
