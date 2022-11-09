@@ -9,6 +9,8 @@ import Services from './components/Services/Services';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import AddService from './components/AddService/AddService';
 import MyReviews from './components/MyReviews/MyReviews';
+import ServiceDetails from './components/ServiceDetails/ServiceDetails';
+import { async } from '@firebase/util';
 
 function App() {
 
@@ -26,6 +28,13 @@ const router = createBrowserRouter([
         path: "/services",
       /*   loader: () => fetch('https://home-service-server.vercel.app/services'), */
         element: <Services></Services>
+      },
+      {
+        path: '/services/:id',
+        loader: async ({params}) => {
+          return fetch(`https://home-service-server.vercel.app/services/${params.id}`)
+        },
+        element: <ServiceDetails></ServiceDetails>
       },
       {
         path: "/addservice",
@@ -52,7 +61,7 @@ const router = createBrowserRouter([
 ])
 
   return (
-    <div className="App">
+    <div>
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
