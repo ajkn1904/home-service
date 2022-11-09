@@ -1,21 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import AddReviewForm from '../AddReviewForm/AddReviewForm';
+import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import ReviewCard from '../ReviewCard/ReviewCard';
 
 const ServiceDetails = () => {
-
-    const {_id, name, img, description, price, ratings, user} = useLoaderData()
-
-
+    const {_id, name, img, description, price, ratings} = useLoaderData()
+    const {user} = useContext(AuthContext)
     const [userReview, setUserReview] = useState([]);
+    const [review, setReview] = useState([]);
 
     useEffect(() => {
         fetch('https://home-service-server.vercel.app/allreviews')
         .then(res => res.json())
         .then(data => setUserReview(data))
-    }, [])
+    }, [userReview]);
 
+
+    let serviceIdFromBD = 0;
+    const serviceInfoFromDB = userReview.find(serviceInfo => {
+        if(serviceInfo.serviceInfo ===_id){
+            serviceIdFromBD = serviceInfo.serviceInfo
+        }
+    })
+
+    
+    useEffect(() => {
+        fetch(`https://home-service-server.vercel.app/review/${_id}`)
+        .then(res => res.json())
+        .then(data => setReview(data))
+    }, [_id])
+
+ 
     return (
         <>
             <h1 className="text-4xl font-bold my-8 text-center">ABOUT THE SERVICE</h1>
@@ -52,11 +68,16 @@ const ServiceDetails = () => {
             </div>
 
             <h1 className="text-4xl font-bold my-14 text-center">REVIEWS</h1>
-            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mx-12 sm:mx-12 md:mx-14 lg:mx-20 my-20'>
+            <div className='flex-col justify-center my-20'>
+            { (serviceIdFromBD===_id) ? 
+            <>
             {
-                userReview.map(reviewData => 
-                <ReviewCard reviewData={reviewData} key={reviewData._id}></ReviewCard>
-            )
+                        review.map(reviewData => 
+                        <ReviewCard reviewData={reviewData} key={reviewData._id}></ReviewCard>
+                    )
+            } </>  
+            :
+                <p className='font-semibold bg-yellow-200 p-3' style={{textAlign: "center"}}>Please Share Your Precious Opinion with Us</p>   
             }
             </div>
 
@@ -65,8 +86,15 @@ const ServiceDetails = () => {
 
             <div className='mb-20'>
                 <h1 className="text-2xl font-bold mt-16  mb-4 text-center">Add Your Review</h1>   
-                {user?.uid ? <AddReviewForm serviceId={_id}></AddReviewForm>
-                : <p>Please <Link to='/login' className='text-blue-600 text-center'>login</Link> to add a review.</p>}
+                {user?.uid ? 
+                <>
+                    <AddReviewForm serviceId={_id}></AddReviewForm>
+                </>
+                : 
+                <>
+                    <p>Please <Link to='/login' className='text-blue-600 text-center'>login</Link> to add a review.</p>
+                </>
+                }
             </div>
             
             

@@ -4,10 +4,10 @@ const ReviewCard = ({reviewData}) => {
 
 
     return (
-        <div className="card w-96 bg-red-100 shadow-xl">
+        <div className="card w-8/12 bg-red-100 shadow-xl my-10 mx-auto">
             <div className="card-body">
                 
-                <div className="flex  justify-between mb-4">
+                <div className="flex justify-between mb-4">
                     
                     <div className='flex justify-center items-center'>
                         <div className="avatar mr-3">
@@ -26,8 +26,7 @@ const ReviewCard = ({reviewData}) => {
                 </div>
                 <p>{reviewData.text}</p>
                 <div className="card-actions justify-end">
-                <div className="badge badge-outline">Fashion</div> 
-                <div className="badge badge-outline">Products</div>
+                <div className="badge badge-outline">Good</div> 
                 </div>
             </div>
         </div>

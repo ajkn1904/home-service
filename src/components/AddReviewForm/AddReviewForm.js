@@ -5,12 +5,11 @@ const AddReviewForm = ({serviceId}) => {
 
     const {user} = useContext(AuthContext)
 
-    console.log(serviceId)
     
     const handleSubmit = (event) => {
-
+        
         event.preventDefault();
-
+        
         const form = event.target;
         const text = form.review.value;
         const ratings = form.ratings.value;
@@ -18,6 +17,7 @@ const AddReviewForm = ({serviceId}) => {
         const email = user.email;
         const usersImg = user.photoURL;
         const serviceInfo = serviceId;
+        //console.log(serviceInfo)
         
         
         const userReviews = {email, userName, usersImg, text, ratings, serviceInfo}
@@ -43,7 +43,7 @@ const AddReviewForm = ({serviceId}) => {
 
 
     return (
-        <form className="card-body border w-6/12 rounded-xl m-auto" onSubmit={handleSubmit}>
+        <form className="card-body border w-8/12 rounded-xl m-auto" onSubmit={handleSubmit}>
                     
             <div className="form-control">
             <label className="label">

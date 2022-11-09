@@ -22,7 +22,7 @@ const {user, userSignIn, signInWithProvider, loading} = useContext(AuthContext);
         .then(res => {
             const user = res.user;
             navigate(from, {replace: true});
-            //console.log(user);
+            console.log(user);
         })
         .catch(err => setError(err.message))
     }
