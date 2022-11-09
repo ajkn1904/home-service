@@ -21,7 +21,8 @@ const {user, userSignIn, signInWithProvider, loading} = useContext(AuthContext);
         signInWithProvider(googleProvider)
         .then(res => {
             const user = res.user;
-            console.log(user);
+            navigate(from, {replace: true});
+            //console.log(user);
         })
         .catch(err => setError(err.message))
     }
