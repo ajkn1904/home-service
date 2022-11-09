@@ -1,9 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
-const AddReviewForm = () => {
+const AddReviewForm = ({serviceId}) => {
 
-    const {user, serviceId} = useContext(AuthContext)
+    const {user} = useContext(AuthContext)
+
+    console.log(serviceId)
     
     const handleSubmit = (event) => {
 

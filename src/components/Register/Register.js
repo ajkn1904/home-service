@@ -5,7 +5,7 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
 
-    const {signInWithProvider, userSighup, loading} = useContext(AuthContext);
+    const {signInWithProvider, userSighup, loading, updateProfileDetails} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
     const [error, setError] = useState(null); 
     const location = useLocation();
@@ -25,6 +25,20 @@ const Register = () => {
             console.log(user);
         })
         .catch(err =>  setError(err.message))
+    }
+
+
+    const handleProfile = (name, photoURL) => {
+
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateProfileDetails(profile)
+        .then(() => {})
+        .catch(error => {
+            console.error(error);
+        })
     }
 
     const handleSubmit = (event) => {
@@ -55,6 +69,8 @@ const Register = () => {
             setError('');
             form.reset();
             navigate(from, {replace: true});
+            handleProfile(name, photoURL);
+
         })
         .catch(error => {
             setError(error.message);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AddReviewForm from '../AddReviewForm/AddReviewForm';
 import ReviewCard from '../ReviewCard/ReviewCard';
@@ -6,6 +6,16 @@ import ReviewCard from '../ReviewCard/ReviewCard';
 const ServiceDetails = () => {
 
     const {_id, name, img, description, price, ratings, user} = useLoaderData()
+
+
+    const [userReview, setUserReview] = useState([]);
+
+    useEffect(() => {
+        fetch('https://home-service-server.vercel.app/allreviews')
+        .then(res => res.json())
+        .then(data => setUserReview(data))
+    }, [])
+    console.log(userReview)
 
     return (
         <>
@@ -43,13 +53,23 @@ const ServiceDetails = () => {
             </div>
 
             <h1 className="text-4xl font-bold my-14 text-center">REVIEWS</h1>
-            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mx-12 sm:mx-12 md:mx-14 lg:mx-20'>
-                <ReviewCard></ReviewCard>
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mx-12 sm:mx-12 md:mx-14 lg:mx-20 my-20'>
+            {
+                userReview.map(reviewData => 
+                <ReviewCard reviewData={reviewData}></ReviewCard>
+            )
+            }
             </div>
 
+            <hr/>
 
-            <h1 className="text-2xl font-bold my-14 text-center">Add Your Review</h1>   
-            <AddReviewForm serviceId={_id}></AddReviewForm>
+
+            <div className='mb-20'>
+                <h1 className="text-2xl font-bold mt-16  mb-4 text-center">Add Your Review</h1>   
+                <AddReviewForm serviceId={_id}></AddReviewForm>
+            </div>
+            
+            
 
         </>
     );
