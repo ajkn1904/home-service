@@ -29,7 +29,7 @@ const ServiceDetails = () => {
         fetch(`https://home-service-server.vercel.app/review/${_id}`)
         .then(res => res.json())
         .then(data => setReview(data))
-    }, [_id])
+    }, [review])
 
  
     return (
