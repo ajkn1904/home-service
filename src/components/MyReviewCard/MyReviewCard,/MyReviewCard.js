@@ -4,7 +4,7 @@ const MyReviewCard = ({review}) => {
     const [serviceData, setServiceData] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${review.serviceInfo}`)
+        fetch(`https://home-service-server.vercel.app/services/${review.serviceInfo}`)
         .then(res => res.json())
         .then(data => setServiceData(data))
     }, [])

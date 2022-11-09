@@ -6,7 +6,7 @@ const MyReviews = () => {
     const {user} = useContext(AuthContext);
     const [myreview, setMyreview] = useState([])
 
-    const url = `http://localhost:5000/myreviews?email=${user.email}`
+    const url = `https://home-service-server.vercel.app/myreviews?email=${user.email}`
 
     useEffect(() => {
         fetch(url)
