@@ -3,17 +3,27 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import MyReviewCard from '../MyReviewCard/MyReviewCard,/MyReviewCard';
 
 const MyReviews = () => {
-    const {user} = useContext(AuthContext);
+    const {user, userSignOut, loading} = useContext(AuthContext);
     const [myreview, setMyreview] = useState([])
 
 
-    const url = `https://home-service-server.vercel.app/myreviews?email=${user.email}`
 
     useEffect(() => {
-        fetch(url)
-        .then(res => res.json())
+        fetch(`https://home-service-server.vercel.app/myreviews?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('hmSrvcToken')}`
+            }
+        })
+        .then(res =>{ 
+            if(res.status === 401 || res.status === 403){
+                localStorage.removeItem('hmSrvcToken')
+                userSignOut()
+                return loading(true)
+            }
+            return res.json()
+        })
         .then(data => setMyreview(data))
-    }, [user?.email])
+    }, [user?.email, userSignOut])
 
 
 
@@ -24,8 +34,11 @@ const MyReviews = () => {
         const doDlt = window.confirm('Do you want to delete this review?');
 
         if(doDlt){
-            fetch(`http://home-service-server.vercel.app/deleteReview/${id}`, {
-                method: 'DELETE'
+            fetch(`http://localhost:5000/deleteReview/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('hmSrvcToken')}`
+                }
             })
             .then(res => res.json())
             .then(data =>{ 

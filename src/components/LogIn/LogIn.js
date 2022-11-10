@@ -40,7 +40,25 @@ const {user, userSignIn, signInWithProvider, loading} = useContext(AuthContext);
             const user = res.user;
             form.reset();
             setError('')
-            navigate(from, {replace: true});
+
+            const currentUser = {
+                email: user.email
+            }
+            console.log(currentUser)
+
+            fetch('http://localhost:5000/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                localStorage.setItem('hmSrvcToken', data.token);
+                navigate(from, {replace: true});
+            })
         })
         .catch(err => setError(err.message));
     }
