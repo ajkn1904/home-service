@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const MyReviewCard = ({review, handleDlt}) => {
     const [serviceData, setServiceData] = useState({});
     const [newReview, setNewReview] = useState('');
+    const [cardId, setCardId] = useState('0');
     const { _id, usersImg, userName, email, text, ratings, serviceInfo } = review;
     const {name} = serviceData;
+
+    console.log(review)
+
 
     useEffect(() => {
         fetch(`https://home-service-server.vercel.app/services/${serviceInfo}`)
@@ -12,16 +17,27 @@ const MyReviewCard = ({review, handleDlt}) => {
         .then(data => setServiceData(data))
     }, []);
 
+    //let cardId = '0'
+
+    const handleEdit = (id) => {
+        console.log(id)
+        setCardId(id);
+    }
+    console.log(cardId)
+
+
     const handleNewReview = (e) =>{
         e.preventDefault()
         setNewReview(e.target.value);
     }
     console.log(newReview)
 
-    const handleUpdt = (e) => {
-        e.preventDefault()
+    
+    const handleUpdt = (id, edited) => {
 
-        fetch(`http://localhost:5000/updateReview/${_id}`, {
+        console.log(id, edited)
+
+        fetch(`https://home-service-server.vercel.app/updateReview/${id}`, {
             method: 'PATCH',
             headers: {
                 
@@ -29,7 +45,7 @@ const MyReviewCard = ({review, handleDlt}) => {
                 
                     "content-type": "application/json"
                 },
-            body: JSON.stringify({status: newReview})
+            body: JSON.stringify({text: edited})
             })
             .then(res => res.json())
             .then(data =>{ 
@@ -65,8 +81,8 @@ const MyReviewCard = ({review, handleDlt}) => {
                     <p>{text}</p>
                     <div className='flex justify-between my-2'>
                         
-                        {/* The button to open modal */}
-                        <label htmlFor="my-modal-6" className="btn btn-ghost btn-circle"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg></label>
+                        
+            {/*             <label onClick={() => handleEdit(_id)} htmlFor="my-modal-6" className="btn btn-ghost btn-circle"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg></label>
 
                         <input type="checkbox" id="my-modal-6" className="modal-toggle" />
                         <div className="modal modal-middle">
@@ -77,9 +93,17 @@ const MyReviewCard = ({review, handleDlt}) => {
                                 </label>
                                 <input onBlur={handleNewReview} type="text" placeholder="Your Text" className="input input-bordered" name="updateReview" required />
                                 </div>
-                                <button onClick={handleUpdt} className="btn btn-success my-5">Update</button>
+                                <div className='flex justify-between items-center'>
+                                    <button onClick={(e) => {
+                                        e.preventDefault()
+
+                                        handleUpdt(cardId, newReview)}} className="btn btn-success my-5">Update</button>
+                                    <label htmlFor="my-modal-6" onClick={()=> handleEdit(null)} className="btn btn-circle">X</label>
+                                </div>
                             </form>
-                        </div>
+                        </div> */}
+
+                        <button className="btn btn-success my-8 mx-auto"><Link to={`/specificReview/${review._id}`}>Edit</Link></button> 
                     
                         
                         <button onClick={() => handleDlt(_id)} className="btn btn-circle btn-ghost">

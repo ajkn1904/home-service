@@ -24,7 +24,7 @@ const AddReviewForm = ({serviceId}) => {
 
         //console.log(text, ratings);
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://home-service-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -3,7 +3,7 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import MyReviewCard from '../MyReviewCard/MyReviewCard,/MyReviewCard';
 
 const MyReviews = () => {
-    const {user, userSignOut, loading} = useContext(AuthContext);
+    const {user, userSignOut} = useContext(AuthContext);
     const [myreview, setMyreview] = useState([])
 
 
@@ -17,8 +17,7 @@ const MyReviews = () => {
         .then(res =>{ 
             if(res.status === 401 || res.status === 403){
                 localStorage.removeItem('hmSrvcToken')
-                userSignOut()
-                return loading(true)
+                return userSignOut()
             }
             return res.json()
         })
@@ -34,7 +33,7 @@ const MyReviews = () => {
         const doDlt = window.confirm('Do you want to delete this review?');
 
         if(doDlt){
-            fetch(`http://localhost:5000/deleteReview/${id}`, {
+            fetch(`https://home-service-server.vercel.app/deleteReview/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('hmSrvcToken')}`

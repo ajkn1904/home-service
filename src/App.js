@@ -11,6 +11,7 @@ import AddService from './components/AddService/AddService';
 import MyReviews from './components/MyReviews/MyReviews';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails';
 import { async } from '@firebase/util';
+import ReviewEditCard from './components/ReviewEditCard/ReviewEditCard';
 
 function App() {
 
@@ -35,6 +36,13 @@ const router = createBrowserRouter([
           return fetch(`https://home-service-server.vercel.app/services/${params.id}`)
         },
         element: <ServiceDetails></ServiceDetails>
+      },
+      {
+        path: '/specificReview/:id',
+        loader: async ({params}) => {
+          return fetch(`https://home-service-server.vercel.app/specificReview/${params.id}`)
+        },
+        element: <ReviewEditCard></ReviewEditCard>
       },
       {
         path: "/addservice",

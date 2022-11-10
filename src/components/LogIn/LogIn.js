@@ -46,7 +46,7 @@ const {user, userSignIn, signInWithProvider, loading} = useContext(AuthContext);
             }
             console.log(currentUser)
 
-            fetch('http://localhost:5000/jwt', {
+            fetch('https://home-service-server.vercel.app/jwt', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
