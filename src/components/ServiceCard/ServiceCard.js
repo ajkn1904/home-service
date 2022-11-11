@@ -5,11 +5,13 @@ import Fullimage from '../Fullimage/Fullimage';
 const ServiceCard = ({service}) => {
 
     const {_id, name, img, description, price, ratings} = service;
-    //console.log(_id)
+    
+    //service card
+
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
 
-            <Fullimage img={img}></Fullimage>
+            <Fullimage img={img}></Fullimage>       
 
             <div className="card-body">
                 <h2 className="card-title mb-6">{name}</h2>

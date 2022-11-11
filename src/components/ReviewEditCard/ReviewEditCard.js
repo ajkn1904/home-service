@@ -1,38 +1,40 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const ReviewEditCard = () => {
-    const clickedId = useLoaderData()
+    const previousReview = useLoaderData()
 
-    const [review, setReview] = useState(clickedId);
+    const [review, setReview] = useState(previousReview);
+    useTitle('My Reviews Edit')
 
 
-    console.log(clickedId)
+        //handling form data 
 
-        const handleInputChange = event =>{
-        const field = event.target.cardId;
+        const handleInputChange = event => {
+        const field = event.target.name;
         const value = event.target.value;
         const newReview = {...review}
         newReview[field] = value;
         setReview(newReview);
+        
     }
+   
     
     const handleEdit = (event) => {
         
         event.preventDefault();
         
         const form = event.target;
-        const cardId = form.cardId.value;
-        const text = form.review.value;
         
         
-        const editedData = {cardId, text}
-
-        fetch(`https://home-service-server.vercel.app/updateReview/${review._id}`, {
+        //editing a document of database using api
+        
+        fetch(`https://home-service-server.vercel.app/updateReview/${previousReview._id}`, {
             method: 'PUT',
             headers: {
                 
-                    authorization: `Bearer ${localStorage.getItem('hmSrvcToken')}`,
+                    authorization: `Bearer ${localStorage.getItem('hmSrvcToken')}`,     //verifying with JWT
                 
                     "content-type": "application/json"
                 },
@@ -40,8 +42,12 @@ const ReviewEditCard = () => {
             })
             .then(res => res.json())
             .then(data =>{ 
-                if(data.acknowledged > 0)
+
+                //confirming user with the response getting from database
+
+                if(data.modifiedCount > 0)
                 alert("Review Updated Successfully.")
+                form.reset()
                 console.log(data)
              })
     }
@@ -57,10 +63,15 @@ const ReviewEditCard = () => {
             <label className="label">
                 <span className="label-text">Info</span>
             </label>
-            <input onChange={handleInputChange} type="text" defaultValue={clickedId._id} placeholder="info" className="input input-bordered" name="cardId" readOnly/>
+            <input onChange={handleInputChange} type="text" defaultValue={previousReview._id} placeholder="info" className="input" name="cardId" disabled/>
+            </div>
+            <div className="form-control">
+            <label className="label">
+                <span className="label-text">Previous Review</span>
+            </label>
+            <input onChange={handleInputChange} type="text" defaultValue={previousReview.text} className="input" disabled/>
             </div>
 
-            <p>Your Previous Review is: {clickedId.text}</p>
 
             <div className="form-control">
             <label className="label">

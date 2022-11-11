@@ -1,22 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { toast, Toaster } from 'react-hot-toast';
+import useTitle from '../../hooks/useTitle';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import MyReviewCard from '../MyReviewCard/MyReviewCard,/MyReviewCard';
 
 const MyReviews = () => {
     const {user, userSignOut} = useContext(AuthContext);
     const [myreview, setMyreview] = useState([])
+    useTitle('My Reviews')          //dynamic title
 
 
+    //fetching api data
 
     useEffect(() => {
         fetch(`https://home-service-server.vercel.app/myreviews?email=${user.email}`, {
             headers: {
-                authorization: `Bearer ${localStorage.getItem('hmSrvcToken')}`
+                //verifying with JWT token
+                authorization: `Bearer ${localStorage.getItem('hmSrvcToken')}`          
             }
         })
         .then(res =>{ 
-            if(res.status === 401 || res.status === 403){
-                localStorage.removeItem('hmSrvcToken')
+            if(res.status === 401 || res.status === 403){           
+                //removing JWT token with unauthorized access and signing out
+                localStorage.removeItem('hmSrvcToken')      
                 return userSignOut()
             }
             return res.json()
@@ -26,9 +32,7 @@ const MyReviews = () => {
 
 
 
-
-
-
+    //deleting a document from the database
     const handleDlt = id => {
         const doDlt = window.confirm('Do you want to delete this review?');
 
@@ -36,14 +40,14 @@ const MyReviews = () => {
             fetch(`https://home-service-server.vercel.app/deleteReview/${id}`, {
                 method: 'DELETE',
                 headers: {
-                    authorization: `Bearer ${localStorage.getItem('hmSrvcToken')}`
+                    authorization: `Bearer ${localStorage.getItem('hmSrvcToken')}`         // verifying  with JWT token
                 }
             })
             .then(res => res.json())
             .then(data =>{ 
                 console.log(data)
                 if(data.deletedCount === 1){
-                    alert('Delete successful');
+                   toast.error("Deleted Successfully")
                     const restReviews = myreview.filter(restRvw => restRvw._id !== id);
                     setMyreview(restReviews);
                 }
@@ -58,10 +62,17 @@ const MyReviews = () => {
         <div>
             <h1 className='text-center text-3xl font-bold my-20'>My All Reviewes ({myreview.length})</h1>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mx-12 sm:mx-12 md:mx-14 lg:mx-20 my-20'>
-                {(myreview.length > 0) ? <>
+               
+               {/* conditional rendering */}
+               
+                {(myreview.length > 0) ? 
+                <>
                     {
-                        myreview.map(review => <MyReviewCard review={review} key={review._id} handleDlt={handleDlt}></MyReviewCard>)
-                    }</>
+                        myreview.map(review => <MyReviewCard review={review} key={review._id} handleDlt={handleDlt}></MyReviewCard>
+                    )
+                    }
+                    <Toaster></Toaster>     {/* implementing react hot toast */}
+                   </>
                     :
                     <p className='font-semibold bg-yellow-200 p-3 text-center'>No reviews were added</p>
                 }

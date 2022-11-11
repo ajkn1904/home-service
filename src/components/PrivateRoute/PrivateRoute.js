@@ -11,12 +11,13 @@ const PrivateRoute = ({children}) => {
         return <button className="btn btn-ghost text-red-700 loading"></button>
     }
 
-    if(user && user.uid){
+    if(user && user.uid){           //private route
         return children;
     }
     else{
         return (       
-           <Navigate to="/login" state={{from: location}} replace></Navigate>
+            //navigator
+            <Navigate to="/login" state={{from: location}} replace></Navigate>
         );
     }
 };

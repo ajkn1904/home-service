@@ -16,8 +16,11 @@ const Header = () => {
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
             <Link to="/" className='btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>HOME</Link>
-            <Link to="/services" className='btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>SERVICES</Link>
             <Link to="/blog" className='btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>BLOG</Link>
+            <Link to="/services" className='btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>SERVICES</Link>
+
+            {/* conditional rendering */}
+
             {  user?.uid ?
                         <>
                         <Link to="/addservice" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>ADD SERVICE</Link>
@@ -41,9 +44,12 @@ const Header = () => {
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <Link to="/" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>HOME</Link>
-            <Link to="/services" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>SERVICES</Link>
             <Link to="/blog" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>BLOG</Link>
+            <Link to="/services" className='mx-4 btn btn-ghost normal-case hover:border-b-4 border-b-green-900'>SERVICES</Link>
                       
+                      
+                      {/* conditional rendering  */}
+
 
             {  user?.uid ?
                         <>

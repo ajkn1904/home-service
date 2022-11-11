@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Home = () => {
     const services = useLoaderData();
-
-
-
+    useTitle('Home')            // dynamic title
     
     
     return (
@@ -22,14 +21,16 @@ const Home = () => {
                 </div>
             </div>
         </div>
-        <p className="text-center mt-20 text-3xl bg-slate-200 p-4 font-bold">Letest Services</p>
-            <div className='grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-16 sm:mx-10 sm:m-auto md:ml-14 lg:ml-20 my-12'>
+        <p className="text-center mt-24 text-3xl p-4 font-bold">Our Latest Services</p>
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mx-12 sm:mx-36 md:ml-14 lg:ml-20 my-12'>
 
                 {
                     services.map(service => <ServiceCard service={service} key={service._id}></ServiceCard>)
                 }
             </div>
-            <Link to="/services" className='btn my-24'>SEE ALL</Link>
+            <div className='flex justify-center'>
+                <Link to="/services" className='btn my-24'>SEE ALL</Link>
+            </div>
             
         </div>
     );

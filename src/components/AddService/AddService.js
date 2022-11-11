@@ -1,6 +1,11 @@
 import React from 'react';
+import { toast, Toaster } from 'react-hot-toast';
+import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
+
+    useTitle('Add Service')
+
     const handleSubmit = (event) => {
         
         event.preventDefault();
@@ -15,6 +20,9 @@ const AddService = () => {
         
         const addedService = {name, description, img, ratings, price}
 
+
+        //Posting a service to the database.
+
         fetch('https://home-service-server.vercel.app/addservice', {
             method: 'POST',
             headers: {
@@ -23,9 +31,12 @@ const AddService = () => {
             body: JSON.stringify(addedService)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error))
+        .then(data => {
+            console.log(data)
 
+        })
+        .catch(error => console.error(error))
+        toast.success("Congratulation!! Successfully added service.")
 
         form.reset()
 
@@ -82,6 +93,7 @@ const AddService = () => {
 
             
         </form>
+        <Toaster></Toaster>
 
         </>
     );

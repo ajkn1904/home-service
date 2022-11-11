@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import SubNavBtns from '../SubNavBtns/SubNavBtns';
+
+//sub navigation bar with service list
 
 const SubNav = () => {
 const [service, setService] = useState([])
+
+    //loading api data
     useEffect(() => {
         fetch('https://home-service-server.vercel.app/services')
         .then(res => res.json())
@@ -9,9 +14,9 @@ const [service, setService] = useState([])
     }, []);
 
     return (
-        <div className='flex flex-evenly flex-wrap gap-8 bg-blue-400 text-white font-semibold'>
+        <div className='flex flex-between flex-wrap gap-8 bg-gray-800 text-white font-semibold'>
              {
-                service.map(srvc => <button className='btn btn-ghost'> {srvc.name} </button>)
+                service.map(srvc => <SubNavBtns className='btn btn-ghost' srvc={srvc} key={srvc._id}/>)
             }
         </div>
     );

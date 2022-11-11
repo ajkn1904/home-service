@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import AddReviewForm from '../AddReviewForm/AddReviewForm';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import Fullimage from '../Fullimage/Fullimage';
 import ReviewCard from '../ReviewCard/ReviewCard';
 
 const ServiceDetails = () => {
@@ -9,6 +11,10 @@ const ServiceDetails = () => {
     const {user} = useContext(AuthContext)
     const [userReview, setUserReview] = useState([]);
     const [review, setReview] = useState([]);
+    useTitle('Service Details')         //dynamic title
+
+
+    //fetching data with api
 
     useEffect(() => {
         fetch('https://home-service-server.vercel.app/allreviews')
@@ -16,7 +22,7 @@ const ServiceDetails = () => {
         .then(data => setUserReview(data))
     }, [userReview]);
 
-
+    //finding a specific data
     let serviceIdFromBD = 0;
     const serviceInfoFromDB = userReview.find(serviceInfo => {
         if(serviceInfo.serviceInfo ===_id){
@@ -24,7 +30,7 @@ const ServiceDetails = () => {
         }
     })
 
-    
+    //loading data from api
     useEffect(() => {
         fetch(`https://home-service-server.vercel.app/review/${_id}`)
         .then(res => res.json())
@@ -34,11 +40,11 @@ const ServiceDetails = () => {
  
     return (
         <>
-            <h1 className="text-4xl font-bold my-8 text-center">ABOUT THE SERVICE</h1>
+            <h1 className="text-4xl font-bold mt-20 mb-10 text-center">ABOUT THE SERVICE</h1>
             <div className="hero min-h-screen bg-gray-200 w-11/12 md:w-10/12 lg:w-10/12 lg:p-10 mx-auto rounded mb-12">
                 <div className="hero-content block sm:block md:flex lg:flex">
                     <div className='flex-col m-6'>
-                        <img src={img} className="max-w-sm rounded-lg shadow-2xl" alt='' style={{ height: "350px", width: "100%"}}/>
+                        <Fullimage img={img} className="max-w-sm rounded-lg shadow-2xl h-3/6" alt='' title='Click to view full image.'/>
                         <div>
                             <h1 className="text-3xl font-bold">{name}</h1>
                             <p className="py-6">{description}</p>
@@ -69,6 +75,9 @@ const ServiceDetails = () => {
 
             <h1 className="text-4xl font-bold my-14 text-center">REVIEWS</h1>
             <div className='flex-col justify-center my-20'>
+            
+            {/* conditional rendering */}
+            
             { (serviceIdFromBD===_id) ? 
             <>
             {
@@ -85,7 +94,7 @@ const ServiceDetails = () => {
 
 
             <div className='mb-20'>
-                <h1 className="text-2xl font-bold mt-16  mb-4 text-center">Add Your Review</h1>   
+                <h1 className="text-4xl font-bold mt-16  mb-4 text-center">Add Your Review</h1>   
                 {user?.uid ? 
                 <>
                     <AddReviewForm serviceId={_id}></AddReviewForm>

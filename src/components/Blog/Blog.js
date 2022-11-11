@@ -1,6 +1,9 @@
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const Blog = () => {
+    useTitle('Blog');
+    
     return (
         <div>
             <h1 className='text-center font-semibold py-6 text-3xl bg-slate-200 mb-16'>Welcome to BLOG!</h1>
@@ -9,10 +12,17 @@ const Blog = () => {
             <div className="hero-content flex-col lg:flex-row">
                <div className="flex flex-col gap-5">
                 <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
+
+                    {/* Blog question */}
+
+
                     <div className="collapse-title text-xl font-bold p-5">
                     Difference between SQL and NoSQL?
                     </div>
                     <div className="collapse-content"> 
+
+                    {/* Answer of the question */}
+  
                         <p>Difference between SQL and NoSQL is mainly: NoSQL is a class of DBMs that are non-relational and generally do not use SQL. Besides, SQL  have fixed or static or predefined schema, when NoSQL have dynamic schema.
 
                         </p>

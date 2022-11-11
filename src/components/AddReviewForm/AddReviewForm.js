@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { toast, Toaster } from 'react-hot-toast';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const AddReviewForm = ({serviceId}) => {
@@ -17,12 +18,12 @@ const AddReviewForm = ({serviceId}) => {
         const email = user.email;
         const usersImg = user.photoURL;
         const serviceInfo = serviceId;
-        //console.log(serviceInfo)
         
         
         const userReviews = {email, userName, usersImg, text, ratings, serviceInfo}
 
-        //console.log(text, ratings);
+
+        //Posting review to the database.
 
         fetch('https://home-service-server.vercel.app/reviews', {
             method: 'POST',
@@ -32,7 +33,10 @@ const AddReviewForm = ({serviceId}) => {
             body: JSON.stringify(userReviews)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            toast.success("Congratulation!!")
+        })
         .catch(error => console.error(error))
 
 
@@ -62,7 +66,7 @@ const AddReviewForm = ({serviceId}) => {
 
 
             <button className="btn btn-success my-5">Add</button>
-
+            <Toaster></Toaster>
             
         </form>
     );

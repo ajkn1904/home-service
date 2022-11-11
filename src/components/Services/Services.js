@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../hooks/useTitle';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Services = () => {
 
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
+    useTitle('Services');       //Dynamic title
+
+
+    //loading data from api
 
     useEffect(() => {
         fetch('https://home-service-server.vercel.app/services')

@@ -1,17 +1,20 @@
 # Home Service
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Visit the project: https://home-service-d7776.web.app/
 
-## Available Scripts
+## Features and Functionalities
 
-In the project directory, you can run:
+In the project directory, you I have implemented:
+* Services.
+* Blog
+* Private Route
+* JWT to make the users data secure
+* Used mongodb to reserve data
+* Firebase Authentication
+* User can add services and review
 
-### `npm start`
+### This site is created by:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-
+* React.js
+* tailwind css
+* DaisyUI

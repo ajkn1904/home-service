@@ -2,7 +2,8 @@ import React from 'react';
 
 const ReviewCard = ({reviewData}) => {
 
-
+    //review card component
+    
     return (
         <div className="card w-8/12 bg-red-100 shadow-xl my-10 mx-auto">
             <div className="card-body">

@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
@@ -8,15 +9,20 @@ const Register = () => {
     const {signInWithProvider, userSighup, loading, updateProfileDetails} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
     const [error, setError] = useState(null); 
-    const location = useLocation();
-    const navigate = useNavigate()
-    const from = location.state?.from?.pathname || "/";
+    const location = useLocation();         //saving url location
+    const navigate = useNavigate()          // navigating url 
+    const from = location.state?.from?.pathname || "/";         //setting url path with login
+    useTitle('Register')        //dynamic title
 
+
+    //loader for keeping user on state
 
     if(loading){
         return <button className="btn btn-ghost text-red-700 loading"></button>
     }
 
+
+    //login with google provider
 
     const handleGoogleBtn = () => {
         signInWithProvider(googleProvider)
@@ -29,6 +35,8 @@ const Register = () => {
     }
 
 
+    //login with email and password
+    
     const handleProfile = (name, photoURL) => {
 
         const profile = {
