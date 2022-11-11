@@ -27,7 +27,7 @@ const ReviewCard = ({reviewData}) => {
                 </div>
                 <p>{reviewData.text}</p>
                 <div className="card-actions justify-end">
-                <div className="badge badge-outline">Good</div> 
+                <div className="badge badge-outline">Review</div> 
                 </div>
             </div>
         </div>

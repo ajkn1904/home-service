@@ -100,7 +100,7 @@ const MyReviewCard = ({review, handleDlt}) => {
 
                 <div className="card-actions justify-end">
                 <span className="badge badge-warning mx-2">{ratings}</span>
-                <div className="badge badge-outline">Good</div> 
+                <div className="badge badge-outline">Review</div> 
                 </div>
             </div>
         </div>
