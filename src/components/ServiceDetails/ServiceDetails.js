@@ -21,6 +21,7 @@ const ServiceDetails = () => {
         .then(res => res.json())
         .then(data => setUserReview(data))
     }, [userReview]);
+    //console.log(userReview)
 
     //finding a specific data
     let serviceIdFromBD = 0;
@@ -35,7 +36,9 @@ const ServiceDetails = () => {
         fetch(`https://home-service-server.vercel.app/review/${_id}`)
         .then(res => res.json())
         .then(data => setReview(data))
-    }, [review])
+    }, [review, _id])
+
+    //console.log(review)
 
  
     return (
