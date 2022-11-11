@@ -13,14 +13,15 @@ const ServiceDetails = () => {
     const [review, setReview] = useState([]);
     useTitle('Service Details')         //dynamic title
 
+    const [reFetch, setReFetch] = useState(false)
 
     //fetching data with api
 
     useEffect(() => {
         fetch('https://home-service-server.vercel.app/allreviews')
         .then(res => res.json())
-        .then(data => setUserReview(data))
-    }, [userReview]);
+        .then(data => setUserReview(data))   
+    }, []);
     //console.log(userReview)
 
     //finding a specific data
@@ -36,7 +37,7 @@ const ServiceDetails = () => {
         fetch(`https://home-service-server.vercel.app/review/${_id}`)
         .then(res => res.json())
         .then(data => setReview(data))
-    }, [review, _id])
+    }, [reFetch, _id])
 
     //console.log(review)
 
@@ -100,7 +101,7 @@ const ServiceDetails = () => {
                 <h1 className="text-4xl font-bold mt-16  mb-4 text-center">Add Your Review</h1>   
                 {user?.uid ? 
                 <>
-                    <AddReviewForm serviceId={_id}></AddReviewForm>
+                    <AddReviewForm serviceId={_id} setReFetch={setReFetch}></AddReviewForm>
                 </>
                 : 
                 <>

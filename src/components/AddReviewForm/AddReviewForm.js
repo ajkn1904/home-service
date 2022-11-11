@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
-const AddReviewForm = ({serviceId}) => {
+const AddReviewForm = ({serviceId, setReFetch}) => {
 
     const {user} = useContext(AuthContext)
 
@@ -36,6 +36,7 @@ const AddReviewForm = ({serviceId}) => {
         .then(data => {
             console.log(data)
             toast.success("Congratulation!!")
+            setReFetch(true)
         })
         .catch(error => console.error(error))
 
