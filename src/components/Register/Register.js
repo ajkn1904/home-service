@@ -21,6 +21,22 @@ const Register = () => {
         return <button className="btn btn-ghost text-red-700 loading"></button>
     }
 
+    //jwt token verification
+    const jwtAssign = (currentUser) => {
+        fetch('https://home-service-server.vercel.app/jwt', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            localStorage.setItem('hmSrvcToken', data.token);
+            navigate(from, {replace: true});
+        })
+    }
 
     //login with google provider
 
@@ -28,7 +44,7 @@ const Register = () => {
         signInWithProvider(googleProvider)
         .then(res => {
             const user = res.user;
-            navigate(from, {replace: true});
+            jwtAssign(user)      
             console.log(user);
         })
         .catch(err =>  setError(err.message))
@@ -77,9 +93,8 @@ const Register = () => {
             const user = result.user;
             setError('');
             form.reset();
-            navigate(from, {replace: true});
-            handleProfile(name, photoURL);
-
+            handleProfile(name, photoURL);     
+            jwtAssign(user)
         })
         .catch(error => {
             setError(error.message);

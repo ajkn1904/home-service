@@ -101,7 +101,7 @@ const ServiceDetails = () => {
                 <h1 className="text-4xl font-bold mt-16  mb-4 text-center">Add Your Review</h1>   
                 {user?.uid ? 
                 <>
-                    <AddReviewForm serviceId={_id} setReFetch={setReFetch}></AddReviewForm>
+                    <AddReviewForm serviceId={_id} setReFetch={setReFetch} reFetch={reFetch}></AddReviewForm>
                 </>
                 : 
                 <>

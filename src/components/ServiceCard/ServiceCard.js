@@ -9,7 +9,7 @@ const ServiceCard = ({service}) => {
     //service card
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="bg-base-100 shadow-xl">
 
             <Fullimage img={img}></Fullimage>       
 

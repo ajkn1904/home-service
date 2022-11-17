@@ -22,13 +22,30 @@ const LogIn = () => {
     }
 
 
+        //jwt token verification
+        const jwtAssign = (currentUser) => {
+            fetch('https://home-service-server.vercel.app/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                localStorage.setItem('hmSrvcToken', data.token);
+                navigate(from, {replace: true});
+            })
+        }
+
     //login with google provider
 
     const handleGoogleBtn = () => {
         signInWithProvider(googleProvider)
         .then(res => {
             const user = res.user;
-            navigate(from, {replace: true});
+            jwtAssign(user)
             console.log(user);
         })
         .catch(err => setError(err.message))
@@ -56,19 +73,7 @@ const LogIn = () => {
             }
             console.log(currentUser)
 
-            fetch('https://home-service-server.vercel.app/jwt', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(currentUser)
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                localStorage.setItem('hmSrvcToken', data.token);
-                navigate(from, {replace: true});
-            })
+            jwtAssign(currentUser)
         })
         .catch(err => setError(err.message));
     }

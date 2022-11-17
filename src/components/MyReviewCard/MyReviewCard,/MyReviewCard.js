@@ -34,7 +34,7 @@ const MyReviewCard = ({review, handleDlt}) => {
 
 
     return (
-        <div className="card w-96 bg-red-100 shadow-xl mx-auto">
+        <div className="card bg-red-100 shadow-xl mx-auto">
             <div className="card-body">
                 
                 <div className="flex justify-between mb-4">

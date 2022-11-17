@@ -36,6 +36,7 @@ const AuthProvider = ({children}) => {          //Auth provider
     // for sign out
 
     const userSignOut = () => {
+        localStorage.removeItem('hmSrvcToken')
         return signOut(auth);
     }
 
