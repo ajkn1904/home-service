@@ -6,7 +6,7 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const LogIn = () => {
 
-    const {userSignIn, signInWithProvider, loading} = useContext(AuthContext);
+    const {userSignIn, signInWithProvider, loading, setLoading} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const [error, setError] = useState(null);
     const location = useLocation();         //saving url location
@@ -48,7 +48,10 @@ const LogIn = () => {
             jwtAssign(user)
             console.log(user);
         })
-        .catch(err => setError(err.message))
+        .catch(err => {
+            setError(err.message)
+            setLoading(false)
+        })
     }
 
 
@@ -75,7 +78,10 @@ const LogIn = () => {
 
             jwtAssign(currentUser)
         })
-        .catch(err => setError(err.message));
+        .catch(err => {
+            setError(err.message)
+            setLoading(false)
+        });
     }
 
     return (
