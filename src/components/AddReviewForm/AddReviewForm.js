@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const AddReviewForm = ({serviceId, setReFetch, reFetch}) => {
@@ -35,7 +35,7 @@ const AddReviewForm = ({serviceId, setReFetch, reFetch}) => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            toast.success("Congratulation!!")
+            toast.success("Congratulation!! Review Added")
             setReFetch(!reFetch)
         })
         .catch(error => console.error(error))
@@ -67,7 +67,7 @@ const AddReviewForm = ({serviceId, setReFetch, reFetch}) => {
 
 
             <button className="btn btn-success my-5">Add</button>
-            <Toaster></Toaster>
+           
             
         </form>
     );

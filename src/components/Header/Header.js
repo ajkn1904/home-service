@@ -37,9 +37,9 @@ const Header = () => {
           </div>
           <div className='flex justify-center align-center ml-5'>
             <img src={Logo} alt="logo" style={{borderRadius:"5px"}} />
-            <h1 className="btn btn-ghost normal-case text-xl italic">HOMEservice</h1>
+            <Link to="/" className="btn btn-ghost normal-case text-xl italic">HOMEservice</Link>
           </div>
-          <p>{user?.displayName}</p>
+          <p className='ml-[30%] w-[200px] italic'>{user?.displayName}</p>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">

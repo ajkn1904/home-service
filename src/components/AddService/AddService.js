@@ -1,5 +1,5 @@
 import React from 'react';
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
@@ -93,7 +93,7 @@ const AddService = () => {
 
             
         </form>
-        <Toaster></Toaster>
+
 
         </>
     );

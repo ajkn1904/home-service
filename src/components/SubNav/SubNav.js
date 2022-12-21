@@ -14,7 +14,7 @@ const [service, setService] = useState([])
     }, []);
 
     return (
-        <div className='flex flex-between flex-wrap gap-8 bg-gray-800 text-white font-semibold'>
+        <div className='flex flex-evenly gap-8 bg-gray-800 text-white font-semibold whitespace-nowrap overflow-auto scrollbar-hide'>
              {
                 service.map(srvc => <SubNavBtns className='btn btn-ghost' srvc={srvc} key={srvc._id}/>)
             }

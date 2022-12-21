@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import useTitle from '../../hooks/useTitle';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import MyReviewCard from '../MyReviewCard/MyReviewCard,/MyReviewCard';
@@ -71,7 +71,7 @@ const MyReviews = () => {
                         myreview.map(review => <MyReviewCard review={review} key={review._id} handleDlt={handleDlt}></MyReviewCard>
                     )
                     }
-                    <Toaster></Toaster>     {/* implementing react hot toast */}
+                   
                    </>
                     :
                     <p className='font-semibold bg-yellow-200 p-3 text-center'>No reviews were added</p>

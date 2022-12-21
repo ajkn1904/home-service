@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <div>
 
-            <section className="hero min-h-screen" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)`}}>
+            <section className="hero min-h-[60vh]" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)`}}>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
@@ -24,7 +24,7 @@ const Home = () => {
             </div>
             </section>
             <section>
-                <p className="text-center mt-24 text-3xl p-4 font-bold">Our Latest Services</p>
+                <p className="text-center mt-24 text-3xl px-4 pt-4 font-bold">Our Latest Services</p>
                 <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mx-12 sm:mx-36 md:ml-14 lg:ml-20 my-12'>
 
                     {
@@ -65,10 +65,10 @@ const Home = () => {
             
             <section className='p-16'>
                 <p className="text-center text-3xl p-4 font-bold mb-5">Insight</p>
-                <div className="bg-green-50 stats shadow flex flex-col sm:flex-col md:flex-row lg:flex-row">
+                <div className="bg-green-50 stats shadow flex flex-col sm:flex-col md:flex-row lg:flex-row overflow-auto scrollbar-hide">
     
                     <div className="stat">
-                        <div className="stat-figure text-primary">
+                        <div className="stat-figure text-primary  hidden sm:hidden md:block">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                         </div>
                         <p className="stat-title">Providing services more than</p>
@@ -77,7 +77,7 @@ const Home = () => {
                     </div>
                     
                     <div className="stat">
-                        <div className="stat-figure text-warning">
+                        <div className="stat-figure text-warning  hidden sm:hidden md:block">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
                         <p className="stat-title">We provide</p>
@@ -86,8 +86,8 @@ const Home = () => {
                     </div>
                     
                     <div className="stat">
-                        <div className="stat-figure">
-                            <FontAwesomeIcon icon={faLineChart} style={{height: '25px'}}></FontAwesomeIcon>
+                        <div className="stat-figure  hidden sm:hidden md:block">
+                            <FontAwesomeIcon icon={faLineChart} className='inline-block w-8 h-8 stroke-current'></FontAwesomeIcon>
                         </div>
                         <p className="stat-title">Today</p>
                         <p className="stat-value">90</p>
