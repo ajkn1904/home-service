@@ -68,7 +68,7 @@ const router = createBrowserRouter([
 ])
 
   return (
-    <div>
+    <div data-theme='light'>
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
