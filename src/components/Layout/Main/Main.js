@@ -6,7 +6,7 @@ import SubNav from '../../SubNav/SubNav';
 import { Toaster } from 'react-hot-toast';
 
 const Main = () => {
-    const [theme, setTheme] =useState('light');
+    const [theme, setTheme] =useState('night');
     const darkMode = localStorage.getItem('data-theme');
 
     return (
