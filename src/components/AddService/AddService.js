@@ -54,7 +54,7 @@ const AddService = () => {
                     
             <div className="form-control">
             <label className="label">
-                <span className="label-text">Name</span>
+                <span className="label-text text-black">Name</span>
             </label>
             <input type="text" placeholder="Name of the Service" className="input input-bordered" name="name" required />
             </div>
@@ -62,13 +62,13 @@ const AddService = () => {
 
             <div className="form-control">
             <label className="label">
-                <span className="label-text">Image URL</span>
+                <span className="label-text text-black">Image URL</span>
             </label>
             <input type="text" placeholder="Image URL of the Service" className="input input-bordered" name="img" required />
             </div>
             <div className="form-control">
             <label className="label">
-                <span className="label-text">Description</span>
+                <span className="label-text text-black">Description</span>
             </label>
             <input type="text" placeholder="Description of the Service" className="input input-bordered" name="description" required />
             </div>
@@ -76,14 +76,14 @@ const AddService = () => {
 
             <div className="form-control">
             <label className="label">
-                <span className="label-text">Ratings</span>
+                <span className="label-text text-black">Ratings</span>
             </label>
             <input type="text" placeholder="Ratings of the Service (4.5)" className="input input-bordered" name="ratings" required />
             </div>
 
             <div className="form-control">
             <label className="label">
-                <span className="label-text">Price</span>
+                <span className="label-text text-black">Price</span>
             </label>
             <input type="text" placeholder="Price of the Service (20)" className="input input-bordered" name="price" required />
             </div>

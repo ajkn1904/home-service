@@ -23,12 +23,12 @@ const ReviewCard = ({reviewData}) => {
 
                         </div>
                     </div>
-                    <div className="badge badge-warning">{reviewData.ratings}</div>
                 </div>
                 <p>{reviewData.text}</p>
-                {/* <div className="card-actions justify-end">
-                <div className="badge badge-outline">Review</div> 
-                </div> */}
+                <div className="card-actions justify-end">
+                <div className="badge badge-warning">{reviewData.ratings}</div>
+{/*                 <div className="badge badge-outline">Review</div>  */}
+                </div>
             </div>
         </div>
     );

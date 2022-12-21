@@ -6,12 +6,14 @@ const Blog = () => {
     
     return (
         <div>
-            <h1 className='text-center font-semibold py-6 text-3xl bg-slate-200 mb-16'>Welcome to BLOG!</h1>
+            <h1 className='text-center font-semibold text-5xl mt-16 mb-8'>Welcome to BLOG!</h1>
 
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-[80vh] bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                <div className="flex flex-col gap-5">
-                <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
+                
+                
+                <div tabIndex={0} className="collapse collapse-plus border bg-base-100 rounded-box border-gray-400">
 
                     {/* Blog question */}
 
@@ -28,7 +30,7 @@ const Blog = () => {
                         </p>
                     </div>
                 </div>
-                <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
+                <div tabIndex={0} className="collapse collapse-plus border bg-base-100 rounded-box border-gray-400">
                     <div className="collapse-title text-xl font-bold p-5">
                     What is JWT, and how does it work?
                     </div>
@@ -37,7 +39,7 @@ const Blog = () => {
                         Firstly, user sign-in using username and password or with other methods. Then authentication server verifies the credentials and issues a jwt signed using either a secret salt or a private key.Then user's Client uses the JWT to access protected resources by passing the JWT in HTTP Authorization header. And finally, resource server then verifies the authenticity of the token using the secret salt/ public key. In this way JWT works. </p>
                     </div>
                 </div>
-                <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
+                <div tabIndex={0} className="collapse collapse-plus border bg-base-100 rounded-box border-gray-400">
                     <div className="collapse-title text-xl font-bold p-5">
                     What is the difference between javascript and NodeJS?
                     </div>
@@ -47,7 +49,7 @@ const Blog = () => {
                         </p>
                     </div>
                 </div>
-                <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
+                <div tabIndex={0} className="collapse collapse-plus border bg-base-100 rounded-box border-gray-400">
                     <div className="collapse-title text-xl font-bold p-5">
                     How does NodeJS handle multiple requests at the same time?
                     </div>

@@ -10,4 +10,7 @@ module.exports = {
     require("daisyui"),
     require('tailwind-scrollbar-hide')
   ],
+  daisyui: {
+    themes: ['light', 'night'],
+  },
 }

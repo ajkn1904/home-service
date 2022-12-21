@@ -61,7 +61,7 @@ const MyReviews = () => {
     return (
         <div>
             <h1 className='text-center text-3xl font-bold my-20'>My All Reviewes ({myreview.length})</h1>
-            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mx-12 sm:mx-12 md:mx-14 lg:mx-20 my-20'>
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mx-12 sm:mx-12 md:mx-14 lg:mx-20 my-20 text-black'>
                
                {/* conditional rendering */}
                

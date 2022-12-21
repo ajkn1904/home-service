@@ -17,8 +17,8 @@ const Home = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">HOMEservice</h1>
-                    <p className="mb-5">“We Love to Serve.”</p>
+                    <h1 className="mb-5 text-5xl font-bold text-white">HOMEservice</h1>
+                    <p className="mb-5 text-white">“We Love to Serve.”</p>
 
                 </div>
             </div>
@@ -32,14 +32,14 @@ const Home = () => {
                     }
                 </div>
                 <div className='flex justify-center'>
-                    <Link to="/services" className='btn my-24'>SEE ALL</Link>
+                    <Link to="/services" className='btn btn-success my-24'>SEE ALL</Link>
                 </div>
             </section>
 
             
             <section className='text-center bg-orange-100 p-10 my-10'>
             
-                <h1 className='text-center my-10 text-3xl p-4 font-bold'>New Client Discount Offer!  <div className="badge bg-red-500 border-0 p-8 text-3xl">$25 OFF!</div></h1>
+                <h1 className='text-center my-10 text-3xl p-4 font-bold text-black'>New Client Discount Offer!  <div className="badge bg-red-500 border-0 p-8 text-3xl">$25 OFF!</div></h1>
                 <button className='btn btn-warning font-bold'><FontAwesomeIcon icon={faMessage} className="mx-2 w-5"></FontAwesomeIcon> Email Code "HOMEsErViCe@123" </button>
                 <div className="flex justify-evenly gap-5 text-center auto-cols-max sm:w-2/12 lg:w-5/12 mx-auto my-10">
                     <div className="flex flex-col bg-neutral rounded-box text-neutral-content p-3">
@@ -71,28 +71,28 @@ const Home = () => {
                         <div className="stat-figure text-primary  hidden sm:hidden md:block">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                         </div>
-                        <p className="stat-title">Providing services more than</p>
+                        <p className="stat-title text-black">Providing services more than</p>
                         <p className="stat-value text-primary">2K</p>
-                        <p className="stat-desc">services last month</p>
+                        <p className="stat-desc text-black">services last month</p>
                     </div>
                     
                     <div className="stat">
                         <div className="stat-figure text-warning  hidden sm:hidden md:block">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
-                        <p className="stat-title">We provide</p>
+                        <p className="stat-title text-black">We provide</p>
                         <p className="stat-value text-warning">100%</p>
-                        <p className="stat-desc">fast service</p>
+                        <p className="stat-desc text-black">fast service</p>
                     </div>
                     
                     <div className="stat">
                         <div className="stat-figure  hidden sm:hidden md:block">
-                            <FontAwesomeIcon icon={faLineChart} className='inline-block w-8 h-8 stroke-current'></FontAwesomeIcon>
+                            <FontAwesomeIcon icon={faLineChart} className='inline-block w-8 h-8 stroke-current text-black'></FontAwesomeIcon>
                         </div>
-                        <p className="stat-title">Today</p>
-                        <p className="stat-value">90</p>
-                        <p className="stat-title">People booked services from us.</p>
-                        <p className="stat-desc text-secondary">11 services on progress</p>
+                        <p className="stat-title text-black">Today</p>
+                        <p className="stat-value text-black">90</p>
+                        <p className="stat-title text-black">People booked services from us.</p>
+                        <p className="stat-desc text-secondary text-black">11 services on progress</p>
                     </div>
                     </div>
                 

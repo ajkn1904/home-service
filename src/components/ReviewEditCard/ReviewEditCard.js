@@ -75,7 +75,7 @@ const ReviewEditCard = () => {
         <>
         <h2 className='text-center text-3xl font-bold my-20'>Edit Your Review</h2>
         
-        <form className="card-body border w-8/12 rounded-xl m-auto" onSubmit={handleEdit}>
+        <form className="card-body border w-8/12 rounded-xl mx-auto mb-10" onSubmit={handleEdit}>
                     
             <div className="form-control">
             <label className="label">
